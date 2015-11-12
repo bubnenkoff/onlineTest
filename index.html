@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Online Test</title>
+
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/questions.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<meta charset="utf-8">
+
+	<script>
+	app.controller("Colorized1", function($scope)
+	{
+		// $scope.changeColor = function()
+		// {
+			$scope.color = "btn btn-success";
+		// }
+	}
+		);
+	</script>
+
+</head>
+<body ng-app="myApp">
+
+	<!-- <div class="container" ng-controller="TestQuestions"> -->
+		<!-- <div id="row" ng-repeat="question in questions"> -->
+				<!-- <h4 class="page-header">{{question.id}}. {{question.question}}</h4> -->
+<!-- 				<div class="user-answer-block" ng-repeat="answer in question.answers">
+				<button type="button" ng-click="color" value="Input Button" ng-model="Colorized">{{answer}}</button> -->
+			</div>
+		</div>
+	</div>
+
+	<div ng-controller="Colorized1"></div>
+
+</body>
+
+
+</body>
+</html>
