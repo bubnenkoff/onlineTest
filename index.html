@@ -25,15 +25,18 @@
 				<div ng-if="item.isEnabled == true">
 					<h4 class="page-header">{{item.id}}. {{item.question}}</h4>
 					<div class="user-answer-block" ng-repeat="answer in item.answers">
-						<button type="button" value="Input Button" ng-click="answer.isSelected=1">{{answer.answer}} </button>
+						<button type="button" value="Input Button" ng-click="answer.isSelected = answer.isSelected+1">{{answer.answer}} </button>
 						<p>{{answer.isSelected}}</p>
 					</div>
 				</div>
 				{{answers.isSelected}}
-
 			</div>
 		</div>
-		<div ng-controller="Colorized1"></div>
+		
+		<div ng-controller="TestQuestions" ng-click="foo = foo + 1">
+			<button>Foo</button>
+			{{foo}}
+			{{bar}}
+		</div>
 	</body>
-</body>
 </html>
