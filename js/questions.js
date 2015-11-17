@@ -85,7 +85,10 @@ app.controller("TestQuestions", function($scope)
     // При нажатии кнопки мы передадим в функцию answer и содержащий его question
     $scope.setChoice = function(answer, question) {
             
-             answer.isSelected = !answer.isSelected;
+            // Меняем состояние кнопки на противоположное
+            answer.isSelected = !answer.isSelected;
+
+
             // Обьявим счетчик отмеченных кнопок
             var _select_count = 0;
             
@@ -95,8 +98,9 @@ app.controller("TestQuestions", function($scope)
                     _select_count++;
                 }
             });
+
             
-            if (_select_count >= question.MaxAllowedChoice) {
+            if (_select_count >= 1) {
                 // Если количество отмеченных кнопок достигло максимально возможного значения
                 
                 // Запустим цикл по всем ответам текущего вопроса
@@ -115,14 +119,24 @@ app.controller("TestQuestions", function($scope)
                     }
                 });
             }
-            
-   
-            // Если разрешен только одиночный выбор
-            
+                 
+       
+       	$scope.calculateResult = function() 
+       	{
+       		angular.forEach($scope.questions, function(question) {
+          		angular.forEach(question.answers, function(answer) {
+          			console.log(question.id, " - ", answer.id, " - ", answer.isSelected);
+            	});
+                
+            });
 
-      
+       	}
         
+
+
     };
+
+
     
 });
 

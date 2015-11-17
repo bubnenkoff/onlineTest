@@ -20,8 +20,8 @@
 		</script>
 	</head>
 	<body ng-app="myApp">
-		<div>
-		    <div ng-controller="TestQuestions">
+		<div ng-controller="TestQuestions">
+		    <div >
 		        <div ng-repeat="question in questions">
 		            <h5>{{ question.question }}</h5>
 		            <button class="btn"
@@ -33,6 +33,7 @@
 		            </button>
 		            <hr>
 		        </div>
+			<button ng-click="calculateResult()">Result</button>
 		    </div>
 		</div>
 		
