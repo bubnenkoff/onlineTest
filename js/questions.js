@@ -125,7 +125,10 @@ app.controller("TestQuestions", function($scope)
        	{
        		angular.forEach($scope.questions, function(question) {
           		angular.forEach(question.answers, function(answer) {
-          			console.log(question.id, " - ", answer.id, " - ", answer.isSelected);
+          			if (answer.isSelected == 1)
+          			{
+          				console.log(question.id, " - ", answer.id, " - ", answer.isSelected);
+          			}
             	});
                 
             });
