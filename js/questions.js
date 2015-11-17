@@ -9,15 +9,15 @@ app.controller("TestQuestions", function($scope)
 									{
 										"id" : 1,
 										"answer":	"Федеральные органы исполнительной власти",
-										"isSelected" : 1
+										"isSelected" : 0
 									}, 
 									{	"id" : 2,
 										 "answer": "Региональные органы исполнительной власти",
-										 "isSelected" : 1
+										 "isSelected" : 0
 									}, 
 									{	 "id" : 3,
 										 "answer": "Местные административные органы управления",
-										 "isSelected" : 1
+										 "isSelected" : 0
 									}, 
 									{	 "id" : 4,
 										 "answer": "Некоммерческие организации",
@@ -57,7 +57,7 @@ app.controller("TestQuestions", function($scope)
 																											"isSelected" : 0
 																										}
 																									  ],
-					"MaxAllowedChoice" : 2,
+					"MaxAllowedChoice" : 1,
 					"isEnabled" : true,
 					"NowSelected" : 0
 				},
@@ -80,25 +80,50 @@ app.controller("TestQuestions", function($scope)
 				}
 		],
 
-		$scope.maxCheckedValues = 1,
 
-		$scope.$watch("questions", function(newVal, oldVal)
-		{
-			angular.forEach($scope.questions, function(question)
-				{
-					angular.forEach(question.answers, function(answer)
-					{
 
-						if (answer.isSelected >= 2) // if we move back to zero we should decrement NowSelected
-						{
-							 answer.isSelected = 0;
-						}
+    // При нажатии кнопки мы передадим в функцию answer и содержащий его question
+    $scope.setChoice = function(answer, question) {
+            
+             answer.isSelected = !answer.isSelected;
+            // Обьявим счетчик отмеченных кнопок
+            var _select_count = 0;
+            
+            // Запустим цикл для подсчета отмеченных кнопок
+            angular.forEach(question.answers, function(_answer) {
+                if (_answer.isSelected) {
+                    _select_count++;
+                }
+            });
+            
+            if (_select_count >= question.MaxAllowedChoice) {
+                // Если количество отмеченных кнопок достигло максимально возможного значения
+                
+                // Запустим цикл по всем ответам текущего вопроса
+                angular.forEach(question.answers, function(_answer) {
+                    if (!_answer.isSelected) {
+                        // Все оставшиеся неотмеченными кнопки задисейблим
+                        _answer.isDisabled = true;
+                    }
+                });
+            } else {
+                // Если количество отмеченных кнопок меньше максимально возможного значения
+                angular.forEach(question.answers, function(_answer) {
+                    if (_answer.isDisabled) {
+                        // Уберем дисейбл с кнопки если он у нее был
+                        _answer.isDisabled = false;
+                    }
+                });
+            }
+            
+   
+            // Если разрешен только одиночный выбор
+            
 
-					});
-				});
+      
+        
+    };
+    
+});
 
-		}, true);	
-
-	
-	});
 

@@ -20,17 +20,20 @@
 		</script>
 	</head>
 	<body ng-app="myApp">
-		<div class="container" ng-controller="TestQuestions">
-			<div id="row" ng-repeat="item in questions">
-				<div ng-if="item.isEnabled == true">
-					<h4 class="page-header">{{item.id}}. {{item.question}}</h4>
-					<div class="user-answer-block" ng-repeat="answer in item.answers">
-						<button type="button" value="Input Button" ng-click="answer.isSelected = answer.isSelected+1">{{answer.answer}} </button>
-						<p>{{answer.isSelected}}</p>
-					</div>
-				</div>
-				{{answers.isSelected}}
-			</div>
+		<div>
+		    <div ng-controller="TestQuestions">
+		        <div ng-repeat="question in questions">
+		            <h5>{{ question.question }}</h5>
+		            <button class="btn"
+		                    ng-repeat="answer in question.answers"
+		                    ng-class="{'btn-primary': answer.isSelected}"
+		                    ng-disabled="answer.isDisabled"
+		                    ng-click="setChoice(answer, question)">
+		                {{ answer.answer }}
+		            </button>
+		            <hr>
+		        </div>
+		    </div>
 		</div>
 		
 		<div ng-controller="TestQuestions" ng-click="foo = foo + 1">
