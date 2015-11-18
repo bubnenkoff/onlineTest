@@ -42,18 +42,44 @@ app.controller("TestQuestions", function($scope)
 					"question": "Какая главная область использования Вами данных ДЗЗ?", "answers": [
 																										{
 																											"id" : 1,
-																											"answer": "Personal",
+																											"answer": "Сельское хозяйство",
+																											"sub-answers":
+																													[
+																														{
+																															"id":1,
+																															"sub-answer": "Растеневодство",
+																															"sub-isSelected" : 0
+																														},
+																														{
+																															"id":2,
+																															"sub-answer": "Животноводство",
+																															"sub-isSelected" : 0
+																														},
+																													],
 																											"isSelected" : 0
 																										}, 
 																										{
 																											"id" : 2,
-																											"answer": "Goverment",
+																											"answer": "Лесное хозяйство",
+																											"sub-answers":
+																													[
+																														{
+																															"id":1,
+																															"sub-answer": "Вырубки",
+																															"sub-isSelected" : 0
+																														},
+																														{
+																															"id":2,
+																															"sub-answer": "Состояние лесонасаждений",
+																															"sub-isSelected" : 0
+																														},
+																													],																											
 																											"isSelected" : 0
 																										},
 
 																										{
 																											"id": 3,
-																											"answer": "Organization",
+																											"answer": "Землепользование",
 																											"isSelected" : 0
 																										}
 																									  ],
@@ -127,7 +153,7 @@ app.controller("TestQuestions", function($scope)
           		angular.forEach(question.answers, function(answer) {
           			if (answer.isSelected == 1)
           			{
-          				console.log(question.id, " - ", answer.id, " - ", answer.isSelected);
+          				console.log("question ID: ", question.id, "; Answer ID: ", answer.id);
           			}
             	});
                 
