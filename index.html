@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<title>Online Test</title>
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript" src="js/questions.js"></script>
@@ -22,15 +21,22 @@
 	<body ng-app="myApp">
 		<div ng-controller="TestQuestions">
 		    <div >
-		        <div ng-repeat="question in questions">
+		        <div ng-repeat="question in questions" ng-show="question.isEnabled">
 		            <h5>{{ question.question }}</h5>
-		            <button class="btn"
-		                    ng-repeat="answer in question.answers"
-		                    ng-class="{'btn-primary': answer.isSelected}"
-		                    ng-disabled="answer.isDisabled"
-		                    ng-click="setChoice(answer, question)">
-		                {{ answer.answer }}
-		            </button>
+		            <div ng-repeat="answer in question.answers" class="user-answer-block">
+			            <button class="btn"
+			                    ng-class="{'btn-primary': answer.isSelected}"
+			                    ng-disabled="answer.isDisabled"
+			                    ng-click="setChoice(answer, question)">
+			                {{ answer.answer }}
+			            </button>
+			            <br/>
+			            <div ng-show="answer.isSelected" class="selected-class">
+			            	<div ng-repeat="a in answer['subanswers']" class="user-answer-block1">
+			            		<button class="btn">{{a.subanswer}}</button>	
+			            	</div>
+			            </div>
+			         </div>
 		            <hr>
 		        </div>
 			<button ng-click="calculateResult()">Result</button>

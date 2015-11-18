@@ -1,8 +1,23 @@
+@import "bootstrap.css";
+
 .user-answer-block {
 	display:inline-block;
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-bottom: 5px;
+}
+
+.user-answer-block1 {
+	display:inline-block;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	padding: 5px;
+}
+
+.selected-class
+{
+	position: absolute;
 }
 
 .test

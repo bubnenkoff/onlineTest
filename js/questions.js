@@ -33,7 +33,7 @@ app.controller("TestQuestions", function($scope)
 									}
 								 ],
 						"MaxAllowedChoice" : 1,
-						"isEnabled" : true,
+						"isEnabled" : false,
 						"NowSelected" : 0
 				},
 
@@ -43,17 +43,17 @@ app.controller("TestQuestions", function($scope)
 																										{
 																											"id" : 1,
 																											"answer": "Сельское хозяйство",
-																											"sub-answers":
+																											"subanswers":
 																													[
 																														{
 																															"id":1,
-																															"sub-answer": "Растеневодство",
-																															"sub-isSelected" : 0
+																															"subanswer": "Растеневодство",
+																															"subisSelected" : 0
 																														},
 																														{
 																															"id":2,
-																															"sub-answer": "Животноводство",
-																															"sub-isSelected" : 0
+																															"subanswer": "Животноводство",
+																															"subisSelected" : 0
 																														},
 																													],
 																											"isSelected" : 0
@@ -61,17 +61,17 @@ app.controller("TestQuestions", function($scope)
 																										{
 																											"id" : 2,
 																											"answer": "Лесное хозяйство",
-																											"sub-answers":
+																											"subanswers":
 																													[
 																														{
 																															"id":1,
-																															"sub-answer": "Вырубки",
-																															"sub-isSelected" : 0
+																															"subanswer": "Вырубки",
+																															"subisSelected" : 0
 																														},
 																														{
 																															"id":2,
-																															"sub-answer": "Состояние лесонасаждений",
-																															"sub-isSelected" : 0
+																															"subanswer": "Состояние лесонасаждений",
+																															"subisSelected" : 0
 																														},
 																													],																											
 																											"isSelected" : 0
