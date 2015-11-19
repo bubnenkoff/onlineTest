@@ -158,13 +158,19 @@ app.controller("TestQuestions", function($scope)
                 {	
                     _select_count++;
 
-              
-	                 angular.forEach(_answer, function(_subanswer) {
-	                 	// console.log(_subanswer.subisSelected);
-	                // 	// if (_answer.isSelected) {	
-	                //  //    	_select_count++;
-	                //      });
-	                 //}
+              		
+	                 angular.forEach(_answer, function(_subanswer) 
+	                 {
+	               		// до этого бегали по ансверам, теперь нужно по массиву сабансверов 
+
+	               		angular.forEach(_subanswer, function(_item) 
+	                	{
+	                 		//console.log(_item.subanswer);
+	                 		console.log(suba);
+	                 		suba.subisSelected = !suba.subisSelected; // меняем состояние
+
+	                 	});
+
 
 	                 });
         		}	
