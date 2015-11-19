@@ -1,7 +1,7 @@
 @import "bootstrap.css";
 
 .user-answer-block {
-	display:inline-block; /* remove to get in one line */
+	//display:inline-block; /* remove to get in one line */
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-bottom: 5px;

@@ -32,7 +32,7 @@ app.controller("TestQuestions", function($scope)
 										 "isSelected" : 0
 									}
 								 ],
-						"MaxAllowedChoice" : 2,
+						"MaxAllowedChoice" : 1,
 						"isEnabled" : true,
 						"NowSelected" : 0
 				},
@@ -83,7 +83,7 @@ app.controller("TestQuestions", function($scope)
 																											"isSelected" : 0
 																										}
 																									  ],
-					"MaxAllowedChoice" : 1,
+					"MaxAllowedChoice" : 3,
 					"isEnabled" : true,
 					"NowSelected" : 0
 				},
@@ -166,9 +166,9 @@ app.controller("TestQuestions", function($scope)
 	               		angular.forEach(_subanswer, function(_item) 
 	                	{
 	                 		//console.log(_item.subanswer);
-	                 		
+	                 		// suba - это данные из кнопки которые мы сюда передаем
 	                 		suba.subisSelected = !suba.subisSelected; // меняем состояние
-							console.log(suba);
+							//console.log(suba);
 	                 	});
 
 
@@ -184,10 +184,29 @@ app.controller("TestQuestions", function($scope)
        	$scope.calculateResult = function() 
        	{
        		angular.forEach($scope.questions, function(question) {
-          		angular.forEach(question.answers, function(answer) {
-          			if (answer.isSelected == 1)
+          		angular.forEach(question.answers, function(_answer) {
+
+          			if (_answer.isSelected == 1)
           			{
-          				console.log("question ID: ", question.id, "; Answer ID: ", answer.id);
+          				
+
+          				// проверить есть ли подпункты
+	               		// копи-паста обхода написанная выше, ТОЛЬКО СОСТОЯНИЕ НЕ МЕНЯЕМ УЖЕ
+
+	               		angular.forEach(_answer, function(_subanswer) 
+		                 {
+		               		// до этого бегали по ансверам, теперь нужно по массиву сабансверов 
+
+		               		angular.forEach(_subanswer, function(_item) 
+		                	{
+		                 		//console.log(_item.subanswer);
+								//console.log(_item);
+		                 	});
+
+
+		                 });
+	               		console.log("question ID: ", question.id, "; Answer ID: ", _answer.id);	
+
           			}
             	});
                 
