@@ -166,9 +166,9 @@ app.controller("TestQuestions", function($scope)
 	               		angular.forEach(_subanswer, function(_item) 
 	                	{
 	                 		//console.log(_item.subanswer);
-	                 		console.log(suba);
+	                 		
 	                 		suba.subisSelected = !suba.subisSelected; // меняем состояние
-
+							console.log(suba);
 	                 	});
 
 
