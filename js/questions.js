@@ -152,13 +152,24 @@ app.controller("TestQuestions", function($scope)
     //         // Меняем состояние кнопки на противоположное
             suba.isSelected = !suba.isSelected;
 
-            angular.forEach(suba, function(_answer) {
-            	console.log(suba);
-                    // if (!_answer.isSelected) {
-                    //     // Все оставшиеся неотмеченными кнопки задисейблим
-                    //     _answer.isDisabled = true;
-                   
-                });
+            // Запустим цикл для подсчета отмеченных кнопок
+            angular.forEach(question.answers, function(_answer) {
+                if (_answer.isSelected) // только для выделенных кнопок идем и смотрим их subanswers и subisSelected (0 или 1)
+                {	
+                    _select_count++;
+
+              
+	                 angular.forEach(_answer, function(_subanswer) {
+	                 	// console.log(_subanswer.subisSelected);
+	                // 	// if (_answer.isSelected) {	
+	                //  //    	_select_count++;
+	                //      });
+	                 //}
+
+	                 });
+        		}	
+
+            });
 
 
             }
