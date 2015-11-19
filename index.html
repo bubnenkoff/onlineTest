@@ -19,34 +19,37 @@
 		</script>
 	</head>
 	<body ng-app="myApp">
-		<div ng-controller="TestQuestions">
-		    <div >
-		        <div ng-repeat="question in questions" ng-show="question.isEnabled">
-		            <h5>{{ question.question }}</h5>
-		            <div ng-repeat="answer in question.answers" class="user-answer-block">
-			            <button class="btn"
-			                    ng-class="{'btn-primary': answer.isSelected}"
-			                    ng-disabled="answer.isDisabled"
-			                    ng-click="setChoice(answer, question)">
-			                {{ answer.answer }}
-			            </button>
-			            <br/>
-			            <div ng-show="answer.isSelected" class="selected-class">
-			            	<div ng-repeat="a in answer['subanswers']" class="user-answer-block1">
-			            		<button class="btn">{{a.subanswer}}</button>	
-			            	</div>
-			            </div>
-			         </div>
-		            <hr>
-		        </div>
-			<button ng-click="calculateResult()">Result</button>
+		<div ng-controller="TestQuestions" class="text-center">
+		    <div>
+                <div ng-repeat="question in questions">
+                    <div ng-show="question.isEnabled">
+                        <h5>{{ question.question }}</h5>
+                        <div ng-repeat="answer in question.answers" class="user-answer-block">
+                            <input type="checkbox" 
+                                    ng-class="{'btn-primary': answer.isSelected}"
+                                    ng-disabled="answer.isDisabled"
+                                    ng-click="setChoice(answer, question)">
+                                {{ answer.answer }}
+                            </button>
+                         </div>
+                        <hr>
+
+                        <div ng-repeat="answer in question.answers" ng-show="answer.isSelected">
+                            <div ng-repeat="suba in answer['subanswers']" class="user-answer-block">
+                                <button class="btn"
+                                        ng-class="{'btn-primary': suba.isSelected}"
+                                        ng-disabled="suba.isDisabled"
+                                        ng-click="setSubChoice(question, answer, suba)">
+                                    {{suba.subanswer}}
+                                </button>
+                            </div>
+                        </div>
+                        <hr>
+                            
+                     </div>
+                </div>
+                <button ng-click="calculateResult()">Result</button>
 		    </div>
-		</div>
-		
-		<div ng-controller="TestQuestions" ng-click="foo = foo + 1">
-			<button>Foo</button>
-		<!-- 	{{foo}}
-			{{bar}} -->
 		</div>
 	</body>
 </html>

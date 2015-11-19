@@ -32,8 +32,8 @@ app.controller("TestQuestions", function($scope)
 										 "isSelected" : 0
 									}
 								 ],
-						"MaxAllowedChoice" : 1,
-						"isEnabled" : false,
+						"MaxAllowedChoice" : 2,
+						"isEnabled" : true,
 						"NowSelected" : 0
 				},
 
@@ -93,7 +93,7 @@ app.controller("TestQuestions", function($scope)
 																			{"id": 1, "answer" : "Dima", "isSelected" : 0}, 
 																			{"id": 2, "answer": "Roma", "isSelected" : 0}, 
 																			{"id": 3, "answer": "Masha", "isSelected" : 0}],
-					"MaxAllowedChoice" : 1,
+					"MaxAllowedChoice" : 2,
 					"isEnabled" : true,
 					"NowSelected" : 0,
 					"foo":"TESTTEST"
@@ -126,7 +126,7 @@ app.controller("TestQuestions", function($scope)
             });
 
             
-            if (_select_count >= 1) {
+            if (_select_count >= question.MaxAllowedChoice) {
                 // Если количество отмеченных кнопок достигло максимально возможного значения
                 
                 // Запустим цикл по всем ответам текущего вопроса
@@ -146,6 +146,23 @@ app.controller("TestQuestions", function($scope)
                 });
             }
                  
+
+     $scope.setSubChoice = function(question, answer, suba) {
+            
+    //         // Меняем состояние кнопки на противоположное
+            suba.isSelected = !suba.isSelected;
+
+            angular.forEach(suba, function(_answer) {
+            	console.log(suba);
+                    // if (!_answer.isSelected) {
+                    //     // Все оставшиеся неотмеченными кнопки задисейблим
+                    //     _answer.isDisabled = true;
+                   
+                });
+
+
+            }
+
        
        	$scope.calculateResult = function() 
        	{
