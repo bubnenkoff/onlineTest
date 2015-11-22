@@ -35,7 +35,7 @@
                         <hr>
 
                         <div ng-repeat="answer in question.answers" ng-show="answer.isSelected">
-                            <div ng-repeat="suba in answer['subanswers']" class="user-answer-block">
+                            <div ng-repeat="suba in answer['subanswers']" class="user-answer-postition">
                                 <input type="checkbox"
                                         ng-class="{'btn-primary': suba.isSelected}"
                                         ng-disabled="suba.isDisabled"
