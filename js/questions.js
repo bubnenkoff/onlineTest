@@ -183,37 +183,50 @@ app.controller("TestQuestions", function($scope)
        
        	$scope.calculateResult = function() 
        	{
+       		var answers_result = [];
        		angular.forEach($scope.questions, function(question) {
           		angular.forEach(question.answers, function(_answer) {
 
           			if (_answer.isSelected == 1)
           			{
+          				//Запишем ответы в массив ответов
+          				var answers_string = ("\"QID\": question.id, \"AID\": _answer.id, \"SubAID\":SubAID_val").replace("question.id", question.id).replace("_answer.id", _answer.id);		
+          				//console.log(answers_result.push(("QID: question.id, AID: _answer.id").replace("question.id", question.id).replace("_answer.id", _answer.id)));		
           				
-
+          				
           				// проверить есть ли подпункты
 	               		// копи-паста обхода написанная выше, ТОЛЬКО СОСТОЯНИЕ НЕ МЕНЯЕМ УЖЕ
-
 	               		angular.forEach(_answer, function(_subanswer) 
 		                 {
 		               		// до этого бегали по ансверам, теперь нужно по массиву сабансверов 
-
+		               		//САБАНСВЕРЫ
 		               		angular.forEach(_subanswer, function(_item) 
 		                	{
+		                 		
 		                 		if (_item.isSelected == 1)
           						{
-		                  			console.log("Subanswer id: ", _item.id);
+		                 			//Запишем подответы в массив ответов
+		                 			answers_string = answers_string.replace("SubAID_val", _item.id)
+		                 			console.log(answers_result.push(answers_string));
+		                 			// console.log(answers_result.push("Subanswer id: ", _item.id));
+		                 			console.log(_item.id);
 		                 		}
-								console.log(_subanswer);
+					//			console.log(_subanswer);
 		                 	});
 
 
 		                 });
-	               		console.log("question ID: ", question.id, "; Answer ID: ", _answer.id);	
+	               		
 
           			}
             	});
                 
             });
+
+       	// 	console.log(answers.push("QID: ", question.id, ", AID: ", _answer.id));	
+      		// console.log("pushed!");
+      		console.log(answers_result);
+
 
        	}
         
