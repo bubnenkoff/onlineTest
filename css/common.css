@@ -22,9 +22,16 @@
 	position: absolute;
 }
 
+.big-checkbox {width: 20px; height: 20px;}
+
 h1
 {
 	text-align: center;
+}
+
+h4
+{
+	display: inline;
 }
 
 .test

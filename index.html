@@ -23,24 +23,24 @@
 		    <div >
                 <div ng-repeat="question in questions">
                     <div ng-show="question.isEnabled" class="text-left">
-                        <h4>{{ question.question }}</h4>
+                        <h3>{{ question.question }}</h3>
                         <div ng-repeat="answer in question.answers" class="user-answer-postition">
-                            <input type="checkbox" 
+                            <input type="checkbox" class="big-checkbox"
                                     ng-class="{'btn-primary': answer.isSelected}"
                                     ng-disabled="answer.isDisabled"
                                     ng-click="setChoice(answer, question)">
-                                {{ answer.answer }}
+                               <h4>{{ answer.answer }}</h4> 
                             </button>
                          </div>
                         <hr>
 
                         <div ng-repeat="answer in question.answers" ng-show="answer.isSelected">
                             <div ng-repeat="suba in answer['subanswers']" class="user-answer-postition">
-                                <input type="checkbox"
+                                <input type="checkbox" class="big-checkbox"
                                         ng-class="{'btn-primary': suba.isSelected}"
                                         ng-disabled="suba.isDisabled"
                                         ng-click="setSubChoice(question, answer, suba)">
-                                    {{suba.subanswer}}
+                                    <h4>{{suba.subanswer}}</h4> 
                                 </button>
                             </div>
                         </div>

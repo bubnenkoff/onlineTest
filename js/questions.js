@@ -199,8 +199,11 @@ app.controller("TestQuestions", function($scope)
 
 		               		angular.forEach(_subanswer, function(_item) 
 		                	{
-		                 		//console.log(_item.subanswer);
-								//console.log(_item);
+		                 		if (_item.isSelected == 1)
+          						{
+		                  			console.log("Subanswer id: ", _item.id);
+		                 		}
+								console.log(_subanswer);
 		                 	});
 
 
