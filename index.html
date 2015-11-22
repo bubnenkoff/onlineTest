@@ -19,12 +19,12 @@
 		</script>
 	</head>
 	<body ng-app="myApp">
-		<div ng-controller="TestQuestions" class="text-center">
-		    <div>
+		<div ng-controller="TestQuestions" class="user-answer-block">
+		    <div >
                 <div ng-repeat="question in questions">
-                    <div ng-show="question.isEnabled">
-                        <h5>{{ question.question }}</h5>
-                        <div ng-repeat="answer in question.answers" class="user-answer-block">
+                    <div ng-show="question.isEnabled" class="text-left">
+                        <h4>{{ question.question }}</h4>
+                        <div ng-repeat="answer in question.answers" class="user-answer-postition">
                             <input type="checkbox" 
                                     ng-class="{'btn-primary': answer.isSelected}"
                                     ng-disabled="answer.isDisabled"
@@ -36,7 +36,7 @@
 
                         <div ng-repeat="answer in question.answers" ng-show="answer.isSelected">
                             <div ng-repeat="suba in answer['subanswers']" class="user-answer-block">
-                                <button class="btn"
+                                <input type="checkbox"
                                         ng-class="{'btn-primary': suba.isSelected}"
                                         ng-disabled="suba.isDisabled"
                                         ng-click="setSubChoice(question, answer, suba)">

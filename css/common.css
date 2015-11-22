@@ -5,13 +5,15 @@
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-bottom: 5px;
+	text-align: inherit;
+	margin-left: 20vh;
 }
 
-.user-answer-block1 {
+.user-answer-postition {
 	
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-bottom: 5px;
+	/*margin-left: 20vh;*/
+	/*margin-right: 5px;
+	margin-bottom: 5px;*/
 	padding: 5px;
 }
 
