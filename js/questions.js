@@ -220,7 +220,7 @@ app.controller("TestQuestions", function($scope)
 	               		
 
    			        //Запишем подответы в массив ответов --> [""QID": 2, "AID": 1, "SubAID":1,2"]
-         			answers_string = answers_string.replace("SubAID_val", answers_sub_puncts.join());
+         			answers_string = (answers_string.replace("SubAID_val", answers_sub_puncts.join()));
          			console.log(answers_result.push(answers_string));	
 
          			//FIX ME 
@@ -232,14 +232,23 @@ app.controller("TestQuestions", function($scope)
             	});
                 
             });
-
+			
        	// 	console.log(answers.push("QID: ", question.id, ", AID: ", _answer.id));	
       		// console.log("pushed!");
+      		//FIXME строка содержит запятую в конце и не совсем валидна в JSON.
       		console.log(answers_result);
 
 
        	}
-        
+
+
+       	// here new controll can be added
+       	// http://prajwalkman.github.io/angular-slider/
+
+
+       	// app.controller('ItemCtrl', ['$scope', function($scope) {
+    	$scope.cost = 350
+			// }]);
 
 
     };

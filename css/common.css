@@ -1,4 +1,5 @@
 @import "bootstrap.css";
+@import "angular-slider.css";
 
 .user-answer-block {
 	//display:inline-block; /* remove to get in one line */
@@ -48,4 +49,25 @@ h4
 {
 color: green;
 font-size: 200%;
+}
+
+
+/* sider */
+
+.ui-slider-tick {
+  position: absolute;
+  background-color: #aaa;
+  width: 2px;
+  height: 8px;
+  top: 16px;
+}
+
+.ui-slider {
+  position: relative;
+}
+
+.ui-slider-out-of-bounds {
+  position: absolute;
+  background-color: #EEE;
+  height: 100%;
 }

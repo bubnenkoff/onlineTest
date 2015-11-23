@@ -3,6 +3,7 @@
 	<head>
 		<title>Online Test</title>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.js"></script>
+        <script src="js/angular-slider.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript" src="js/questions.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/common.css">
@@ -44,11 +45,17 @@
                             </div>
 
                          </div>
-                        
                         <hr>
                             
                      </div>
                 </div>
+
+                <!-- //INSERT SLIDER HERE-->
+                 <div style="width:600px;">
+                  <p>Cost: {{cost}}</p> 
+                  <slider floor="100" ceiling="1000" step="1" precision="2" ng-model="cost"></slider>
+                 </div>
+                <!--  -->
                 <button ng-click="calculateResult()">Result</button>
 		    </div>
 		</div>
