@@ -184,14 +184,14 @@ app.controller("TestQuestions", function($scope)
        	$scope.calculateResult = function() 
        	{
        		var answers_result = [];
-       		var answers_sub_puncts = []; //collect of selected sub-items
        		angular.forEach($scope.questions, function(question) {
           		angular.forEach(question.answers, function(_answer) {
 
           			if (_answer.isSelected == 1)
           			{
+          				var answers_sub_puncts = []; //collect of selected sub-items
           				//Запишем ответы в массив ответов
-          				var answers_string = ("\"QID\": question.id, \"AID\": _answer.id, \"SubAID\":[SubAID_val]").replace("question.id", question.id).replace("_answer.id", _answer.id);		
+          				var answers_string = ("{\"QID\": question.id, \"AID\": _answer.id, \"SubAID\":[SubAID_val]},").replace("question.id", question.id).replace("_answer.id", _answer.id);		
           				//console.log(answers_result.push(("QID: question.id, AID: _answer.id").replace("question.id", question.id).replace("_answer.id", _answer.id)));		
           				
           				
@@ -222,6 +222,11 @@ app.controller("TestQuestions", function($scope)
    			        //Запишем подответы в массив ответов --> [""QID": 2, "AID": 1, "SubAID":1,2"]
          			answers_string = answers_string.replace("SubAID_val", answers_sub_puncts.join());
          			console.log(answers_result.push(answers_string));	
+
+         			//FIX ME 
+         			//ПРИ ВЫБОРЕ нескольких пунктов вот такая херь вылазит:
+         			// [""QID": 2, "AID": 1, "SubAID":[1,2]", ""QID": 3, "AID": 1, "SubAID":[1,2]"]
+
 
           			}
             	});
