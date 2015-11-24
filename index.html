@@ -29,7 +29,7 @@
 
 
 		<div ng-controller="TestQuestions" class="user-answer-block">
-		    <div >
+		    <div class="container" >
                 <div ng-repeat="question in questions">
                     <div ng-show="question.isEnabled" class="text-left">
                         <h3>{{ question.question }}</h3>
@@ -61,8 +61,8 @@
                 <!-- //INSERT SLIDER HERE-->
                  <div style="width:600px;">
                     <h3>Площадь изучаемой территории</h3>
-                  <p>Минимальная: {{minArea}} км&sup2;</p> 
-                  <p>Максимальная: {{maxArea}} км&sup2;</p> 
+                  <h4>Минимальная: {{minArea}} км&sup2;</h4> <br>
+                  <h4>Максимальная: {{maxArea}} км&sup2;<h4>
                   <!-- <slider floor="100" ceiling="1000" step="1" precision="2" ng-model="cost"></slider> -->
                   <slider floor="0" ceiling="100" ng-model-low="minArea" ng-model-high="maxArea"></slider>
                  </div>

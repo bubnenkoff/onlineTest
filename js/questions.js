@@ -245,15 +245,9 @@ app.controller("TestQuestions", function($scope)
        	}
 
 
-       	// here new controll can be added
-       	// http://prajwalkman.github.io/angular-slider/
-
-
-       	// app.controller('SliderCtrl', ['$scope', function($scope) {
-    	// $scope.minCost = 0;
-    	// $scope.maxCost = 100;
-		 // }]);
-
+    $http.post('http://127.0.0.1:8080', $httpParamSerializer(answers_result)).
+    success(function(data){/* response status 200-299 */}).
+    error(function(data){/* response status 400-999 */});
 
     };
 
