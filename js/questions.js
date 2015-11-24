@@ -244,6 +244,8 @@ app.controller("TestQuestions", function($scope)
 
        	}
 
+$scope.sendDatatoServer = function() 
+  	{
 
     $http.post('http://127.0.0.1:8080', $httpParamSerializer(answers_result)).
     success(function(data){/* response status 200-299 */}).
