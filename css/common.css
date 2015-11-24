@@ -2,12 +2,10 @@
 @import "angular-slider.css";
 
 .user-answer-block {
-	//display:inline-block; /* remove to get in one line */
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-bottom: 5px;
 	text-align: inherit;
 	margin-left: 20vh;
+	overflow: hidden;
+
 }
 
 .user-answer-postition {
@@ -70,4 +68,24 @@ font-size: 200%;
   position: absolute;
   background-color: #EEE;
   height: 100%;
+}
+
+
+.logo{
+  width: 100%;
+  vertical-align: middle;
+  margin: 0 40px;
+  overflow: hidden;
+  display: inline-block;
+  text-align: center;
+}
+
+
+.footer{
+  width: 100%;
+  vertical-align: middle;
+  margin: 0 40px;
+  overflow: hidden;
+  display: inline-block;
+  text-align: center;
 }

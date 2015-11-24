@@ -20,6 +20,14 @@
 		</script>
 	</head>
 	<body ng-app="myApp">
+	
+	<div class="mycontainer"> 
+	<!-- <div class="header"><img src="imgs/top1.jpg"></div> -->
+		<header class="logo">
+			<img src="imgs/top1.jpg"></div>
+		</header>
+
+
 		<div ng-controller="TestQuestions" class="user-answer-block">
 		    <div >
                 <div ng-repeat="question in questions">
@@ -52,12 +60,35 @@
 
                 <!-- //INSERT SLIDER HERE-->
                  <div style="width:600px;">
-                  <p>Cost: {{cost}}</p> 
-                  <slider floor="100" ceiling="1000" step="1" precision="2" ng-model="cost"></slider>
+                    <h3>Площадь изучаемой территории</h3>
+                  <p>Минимальная: {{minArea}} км&sup2;</p> 
+                  <p>Максимальная: {{maxArea}} км&sup2;</p> 
+                  <!-- <slider floor="100" ceiling="1000" step="1" precision="2" ng-model="cost"></slider> -->
+                  <slider floor="0" ceiling="100" ng-model-low="minArea" ng-model-high="maxArea"></slider>
                  </div>
                 <!--  -->
                 <button ng-click="calculateResult()">Result</button>
+                <p></p>
 		    </div>
 		</div>
+
+
+
+<!-- <footer class="bottom"> -->
+
+<div class="second">
+	<div class="footer">
+		<img src="imgs/bottom.jpg">
+	<!-- <p class="navbar-text pull-center">НЦ ОМЗ</p> -->
+	</div>
+ </div>
+
+
+
+<!-- </footer> -->
+
+
+</div>
+
 	</body>
 </html>

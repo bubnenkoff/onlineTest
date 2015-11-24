@@ -1,5 +1,8 @@
 app.controller("TestQuestions", function($scope) 
 	{
+		$scope.minArea = 10;
+    	$scope.maxArea = 90;
+
 		$scope.questions =
 		[
 				{
@@ -246,9 +249,10 @@ app.controller("TestQuestions", function($scope)
        	// http://prajwalkman.github.io/angular-slider/
 
 
-       	// app.controller('ItemCtrl', ['$scope', function($scope) {
-    	$scope.cost = 350
-			// }]);
+       	// app.controller('SliderCtrl', ['$scope', function($scope) {
+    	// $scope.minCost = 0;
+    	// $scope.maxCost = 100;
+		 // }]);
 
 
     };
