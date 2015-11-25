@@ -1,8 +1,10 @@
 app.controller("TestQuestions", function($scope, $http) 
 	{
+	
+	// $.post("http://127.0.0.1:8080", "\"answers_result\":777");  	
+
 		$scope.minArea = 10;
     	$scope.maxArea = 90;
-
 		$scope.questions =
 		[
 				{
@@ -194,7 +196,7 @@ app.controller("TestQuestions", function($scope, $http)
           			{
           				var answers_sub_puncts = []; //collect of selected sub-items
           				//Запишем ответы в массив ответов
-          				var answers_string = ("{\"QID\": question.id, \"AID\": _answer.id, \"SubAID\":[SubAID_val]},").replace("question.id", question.id).replace("_answer.id", _answer.id);		
+          				var answers_string = ("{\"QID\": question.id, \"AID\": _answer.id, \"SubAID\":[SubAID_val],").replace("question.id", question.id).replace("_answer.id", _answer.id);		
           				//console.log(answers_result.push(("QID: question.id, AID: _answer.id").replace("question.id", question.id).replace("_answer.id", _answer.id)));		
           				
           				
@@ -225,35 +227,33 @@ app.controller("TestQuestions", function($scope, $http)
    			        //Запишем подответы в массив ответов --> [""QID": 2, "AID": 1, "SubAID":1,2"]
          			answers_string = (answers_string.replace("SubAID_val", answers_sub_puncts.join()));
          			// area_string = ("{\"MinArea\": %s, \"MaxArea\": %s", $scope.minArea, $scope.maxArea);
-         			area_string = ("{\"MinArea\": _min, \"MaxArea\": _max}").replace("_min", $scope.minArea).replace("_max", $scope.maxArea);
+         			area_string = ("\"MinArea\": _min, \"MaxArea\": _max}").replace("_min", $scope.minArea).replace("_max", $scope.maxArea);
 
-         			total_restult = answers_string + area_string;
+         			total_result = answers_string + area_string;
          			// console.log($scope.minArea);
          			// console.log($scope.maxArea);
-         			console.log(answers_result.push(total_restult));	
+         			console.log(answers_result.push(total_result));	
          			//console.log(area_string);	
-
-         			//FIX ME 
-         			//ПРИ ВЫБОРЕ нескольких пунктов вот такая херь вылазит:
-         			// [""QID": 2, "AID": 1, "SubAID":[1,2]", ""QID": 3, "AID": 1, "SubAID":[1,2]"]
+         			$.post("http://127.0.0.1:8080/my", total_result.bodyReader); 
+         			console.log(answers_result);
 
 
-          			}
+        			}
             	});
+
+
+
                 
             });
 			
        	// 	console.log(answers.push("QID: ", question.id, ", AID: ", _answer.id));	
-      		
+    		
       		console.log(answers_result);
 
 
 
       		// При нажатии кнопки мы отправляем JSON на урл:
 
-     //  	$http.post('http://127.0.0.1:8080', $httpParamSerializer(answers_result)).
-	    // success(function(data){console.log("Post success")}).
-    	// error(function(data){console.log("Post error")});
 
 
 
