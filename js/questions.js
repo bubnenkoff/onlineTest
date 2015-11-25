@@ -1,4 +1,4 @@
-app.controller("TestQuestions", function($scope) 
+app.controller("TestQuestions", function($scope, $http) 
 	{
 		$scope.minArea = 10;
     	$scope.maxArea = 90;
@@ -224,7 +224,14 @@ app.controller("TestQuestions", function($scope)
 
    			        //Запишем подответы в массив ответов --> [""QID": 2, "AID": 1, "SubAID":1,2"]
          			answers_string = (answers_string.replace("SubAID_val", answers_sub_puncts.join()));
-         			console.log(answers_result.push(answers_string));	
+         			// area_string = ("{\"MinArea\": %s, \"MaxArea\": %s", $scope.minArea, $scope.maxArea);
+         			area_string = ("{\"MinArea\": _min, \"MaxArea\": _max}").replace("_min", $scope.minArea).replace("_max", $scope.maxArea);
+
+         			total_restult = answers_string + area_string;
+         			// console.log($scope.minArea);
+         			// console.log($scope.maxArea);
+         			console.log(answers_result.push(total_restult));	
+         			//console.log(area_string);	
 
          			//FIX ME 
          			//ПРИ ВЫБОРЕ нескольких пунктов вот такая херь вылазит:
@@ -237,17 +244,24 @@ app.controller("TestQuestions", function($scope)
             });
 			
        	// 	console.log(answers.push("QID: ", question.id, ", AID: ", _answer.id));	
-      		// console.log("pushed!");
-      		//FIXME строка содержит запятую в конце и не совсем валидна в JSON.
+      		
       		console.log(answers_result);
+
+
+
+      		// При нажатии кнопки мы отправляем JSON на урл:
+
+     //  	$http.post('http://127.0.0.1:8080', $httpParamSerializer(answers_result)).
+	    // success(function(data){console.log("Post success")}).
+    	// error(function(data){console.log("Post error")});
+
+
+
 
 
        	}
 
 
-    $http.post('http://127.0.0.1:8080', $httpParamSerializer(answers_result)).
-    success(function(data){/* response status 200-299 */}).
-    error(function(data){/* response status 400-999 */});
 
     };
 
