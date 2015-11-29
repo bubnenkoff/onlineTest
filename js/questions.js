@@ -3,8 +3,7 @@ app.controller("TestQuestions", function($scope, $http)
 	
 //	 $.post("http://127.0.0.1:8080", `{"answers_result":777}`);  	
 
-		$scope.minArea = 10;
-    	$scope.maxArea = 90;
+
 		$scope.questions =
 		[
 				{
@@ -186,9 +185,13 @@ app.controller("TestQuestions", function($scope, $http)
             }
 
        
-       	var total_result_all; // ALL Items
+  		$scope.minArea = 10;
+    	$scope.maxArea = 90;
+    	var sub_answers;
        	$scope.calculateResult = function() 
        	{
+       		
+       		var total_result_all = new Array();    
        		var answers_result; // every single item
        		angular.forEach($scope.questions, function(question) {
           		angular.forEach(question.answers, function(_answer) {
@@ -197,7 +200,7 @@ app.controller("TestQuestions", function($scope, $http)
           			{
           				var answers_sub_puncts = []; //collect of selected sub-items
 
-          				answers_string = JSON.stringify({QID: question.id, AID: answer.id});         				
+          				answers_string = {QID: question.id, AID: answer.id};         				
           				
           				// проверить есть ли подпункты
 	               		// копи-паста обхода написанная выше, ТОЛЬКО СОСТОЯНИЕ НЕ МЕНЯЕМ УЖЕ
@@ -223,47 +226,40 @@ app.controller("TestQuestions", function($scope, $http)
 		                 });
 	               		
 
-   			        sub_answers = JSON.stringify({SubAID: answers_sub_puncts});
+   			        sub_answers = {SubAID: answers_sub_puncts};
    			        // console.log("-----------");
    			        // console.log(sub_answers);
    			        // console.log("-----------");
          			
-         			area_string = JSON.stringify({MinArea: $scope.minArea, MaxArea: $scope.maxArea});
-         			var total_result = '[' + [answers_string, sub_answers, area_string].join(', ') + ']';
-         			console.log(total_result);
+         			area_string = {MinArea: $scope.minArea, MaxArea: $scope.maxArea};
+         			var total_result = new Array(); 
+         			total_result.push(answers_string, sub_answers);
+         			//total_result_all.push(total_result, area_string);
+         			total_result_all.push(total_result);
          			
-         			// console.log(angular.extend(answers_result, answers_string, sub_answers,area_string));
-/*
-         			// var total_result =  answers_result;//.concat(sub_answers);
-         			console.log(total_result);
-         			console.log("______=====");
-         			// total_result = answers_string + area_string;
-         			// console.log($scope.minArea);
-         			// console.log($scope.maxArea);
-         			console.log(answers_result.push(total_result));	
-         			//console.log(area_string);	
-*/
-         			
-	                
-	                $http({
-	                    method: 'POST',
-	                    url: 'http://127.0.0.1:8080/my',
-	                    data: total_result
-	                })
-	                    .success(function(data) {})
-	                 
-
-         		//	$http.post("http://127.0.0.1:8080/my", total_result); 
-         			console.log(answers_result);
-
+         			console.log(total_result_all);
+         						
 
         			}
             	});
 
 
-
                 
             });
+
+
+	                $http({
+	                    method: 'POST',
+	                    url: 'http://127.0.0.1:8080/my',
+	                    data: total_result_all
+	                })
+	                    .success(function(data) {})
+
+               		total_result_all.push(area_string);
+               		//	$http.post("http://127.0.0.1:8080/my", total_result); 
+         			//console.log(answers_result);
+
+
 			
        	// 	console.log(answers.push("QID: ", question.id, ", AID: ", _answer.id));	
     		
