@@ -2,7 +2,8 @@ app.controller("TestQuestions", function($scope, $http)
 	{
 	
 //	 $.post("http://127.0.0.1:8080", `{"answers_result":777}`);  	
-
+  		$scope.minArea = 10;
+    	$scope.maxArea = 90;
 
 		$scope.questions =
 		[
@@ -185,8 +186,7 @@ app.controller("TestQuestions", function($scope, $http)
             }
 
        
-  		$scope.minArea = 10;
-    	$scope.maxArea = 90;
+
     	var sub_answers;
        	$scope.calculateResult = function() 
        	{
@@ -200,7 +200,8 @@ app.controller("TestQuestions", function($scope, $http)
           			{
           				var answers_sub_puncts = []; //collect of selected sub-items
 
-          				answers_string = {QID: question.id, AID: answer.id};         				
+          				answers_string = {QID: question.id, AID: _answer.id};
+          				console.log("answers_string: %s", _answer.id)         				
           				
           				// проверить есть ли подпункты
 	               		// копи-паста обхода написанная выше, ТОЛЬКО СОСТОЯНИЕ НЕ МЕНЯЕМ УЖЕ
