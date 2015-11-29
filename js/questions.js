@@ -1,7 +1,7 @@
 app.controller("TestQuestions", function($scope, $http) 
 	{
 	
-	 $.post("http://127.0.0.1:8080", `{"answers_result":777}`);  	
+//	 $.post("http://127.0.0.1:8080", `{"answers_result":777}`);  	
 
 		$scope.minArea = 10;
     	$scope.maxArea = 90;
@@ -186,9 +186,10 @@ app.controller("TestQuestions", function($scope, $http)
             }
 
        
+       	var total_result_all; // ALL Items
        	$scope.calculateResult = function() 
        	{
-       		var answers_result;
+       		var answers_result; // every single item
        		angular.forEach($scope.questions, function(question) {
           		angular.forEach(question.answers, function(_answer) {
 
@@ -228,9 +229,9 @@ app.controller("TestQuestions", function($scope, $http)
    			        // console.log("-----------");
          			
          			area_string = JSON.stringify({MinArea: $scope.minArea, MaxArea: $scope.maxArea});
-         			total_result = '[' + [answers_string, sub_answers, area_string].join(', ') + ']';
+         			var total_result = '[' + [answers_string, sub_answers, area_string].join(', ') + ']';
          			console.log(total_result);
-         	
+         			
          			// console.log(angular.extend(answers_result, answers_string, sub_answers,area_string));
 /*
          			// var total_result =  answers_result;//.concat(sub_answers);
@@ -242,7 +243,17 @@ app.controller("TestQuestions", function($scope, $http)
          			console.log(answers_result.push(total_result));	
          			//console.log(area_string);	
 */
-         			$.post("http://127.0.0.1:8080/my", total_result); 
+         			
+	                
+	                $http({
+	                    method: 'POST',
+	                    url: 'http://127.0.0.1:8080/my',
+	                    data: total_result
+	                })
+	                    .success(function(data) {})
+	                 
+
+         		//	$http.post("http://127.0.0.1:8080/my", total_result); 
          			console.log(answers_result);
 
 
