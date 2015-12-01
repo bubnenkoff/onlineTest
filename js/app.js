@@ -1,1 +1,1 @@
-var app = angular.module("myApp",['uiSlider']);
+var app = angular.module("myApp",['uiSlider','zingchart-angularjs']);
