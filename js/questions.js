@@ -271,14 +271,10 @@ app.controller("TestQuestions", function($scope, $http)
       		// При нажатии кнопки мы отправляем JSON на урл:
 
 
-
-
-
-
        	}
 
-$scope.sendDatatoServer = function() 
-  	{
+// $scope.sendDatatoServer = function() 
+//   	{
 
 
     };
