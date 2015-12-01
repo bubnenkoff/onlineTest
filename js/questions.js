@@ -1,6 +1,8 @@
-app.controller("TestQuestions", function($scope) 
+app.controller("TestQuestions", function($scope, $http) 
 	{
-		$scope.minArea = 10;
+	
+//	 $.post("http://127.0.0.1:8080", `{"answers_result":777}`);  	
+  		$scope.minArea = 10;
     	$scope.maxArea = 90;
 
 		$scope.questions =
@@ -184,19 +186,22 @@ app.controller("TestQuestions", function($scope)
             }
 
        
+
+    	var sub_answers;
        	$scope.calculateResult = function() 
        	{
-       		var answers_result = [];
+       		
+       		var total_result_all = new Array();    
+       		var answers_result; // every single item
        		angular.forEach($scope.questions, function(question) {
           		angular.forEach(question.answers, function(_answer) {
 
           			if (_answer.isSelected == 1)
           			{
           				var answers_sub_puncts = []; //collect of selected sub-items
-          				//Запишем ответы в массив ответов
-          				var answers_string = ("{\"QID\": question.id, \"AID\": _answer.id, \"SubAID\":[SubAID_val]},").replace("question.id", question.id).replace("_answer.id", _answer.id);		
-          				//console.log(answers_result.push(("QID: question.id, AID: _answer.id").replace("question.id", question.id).replace("_answer.id", _answer.id)));		
-          				
+
+          				answers_string = {QID: question.id, AID: _answer.id};
+          				console.log("answers_string: %s", _answer.id)         				
           				
           				// проверить есть ли подпункты
 	               		// копи-паста обхода написанная выше, ТОЛЬКО СОСТОЯНИЕ НЕ МЕНЯЕМ УЖЕ
@@ -222,24 +227,52 @@ app.controller("TestQuestions", function($scope)
 		                 });
 	               		
 
-   			        //Запишем подответы в массив ответов --> [""QID": 2, "AID": 1, "SubAID":1,2"]
-         			answers_string = (answers_string.replace("SubAID_val", answers_sub_puncts.join()));
-         			console.log(answers_result.push(answers_string));	
+   			        sub_answers = {SubAID: answers_sub_puncts};
+   			        // console.log("-----------");
+   			        // console.log(sub_answers);
+   			        // console.log("-----------");
+         			
+         			area_string = {MinArea: $scope.minArea, MaxArea: $scope.maxArea};
+         			var total_result = new Array(); 
+         			total_result.push(answers_string, sub_answers);
+         			//total_result_all.push(total_result, area_string);
+         			total_result_all.push(total_result);
+         			
+         			console.log(total_result_all);
+         						
 
-         			//FIX ME 
-         			//ПРИ ВЫБОРЕ нескольких пунктов вот такая херь вылазит:
-         			// [""QID": 2, "AID": 1, "SubAID":[1,2]", ""QID": 3, "AID": 1, "SubAID":[1,2]"]
-
-
-          			}
+        			}
             	});
+
+
                 
             });
+
+
+	                $http({
+	                    method: 'POST',
+	                    url: 'http://127.0.0.1:8080/my',
+	                    data: total_result_all
+	                })
+	                    .success(function(data) {})
+
+               		total_result_all.push(area_string);
+               		//	$http.post("http://127.0.0.1:8080/my", total_result); 
+         			//console.log(answers_result);
+
+
 			
        	// 	console.log(answers.push("QID: ", question.id, ", AID: ", _answer.id));	
-      		// console.log("pushed!");
-      		//FIXME строка содержит запятую в конце и не совсем валидна в JSON.
+    		
       		console.log(answers_result);
+
+
+
+      		// При нажатии кнопки мы отправляем JSON на урл:
+
+
+
+
 
 
        	}
@@ -247,9 +280,6 @@ app.controller("TestQuestions", function($scope)
 $scope.sendDatatoServer = function() 
   	{
 
-    $http.post('http://127.0.0.1:8080', $httpParamSerializer(answers_result)).
-    success(function(data){/* response status 200-299 */}).
-    error(function(data){/* response status 400-999 */});
 
     };
 
