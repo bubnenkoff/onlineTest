@@ -9,12 +9,12 @@
     <script src="js/angular-slider.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/questions.js"></script>
-		<script type="text/javascript" src="js/questions-content.js"></script>
+
+
 		<link rel="stylesheet" type="text/css" href="css/common.css">
 		<meta charset="utf-8">
 	</head>
 	<body ng-app="myApp">
-	
     <div ng-controller="TestQuestions">
     
     <div style="text-align: center;">
@@ -23,7 +23,26 @@
           <div class="row">
             <div class="col-sm-12"><img src="imgs/top1.jpg"></div>
             <div class="row">
-              <div class="pull-right"><div class="navbar-text">Logout</div></div>
+              <div class="pull-right"><div class="navbar-text">
+                
+                   <form class="form-inline">
+                    <div class="form-group">
+                      <label class="sr-only" for="exampleUserName">User name</label>
+                      <input type="username" ng-model="username" class="form-control" id="exampleUserName" placeholder="username">
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only" for="exampleInputPassword3">Password</label>
+                      <input type="password" ng-model="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox"> Remember me
+                      </label>
+                    </div>
+                    <button type="submit" class="btn btn-default" ng-click="sendLoginInfo()">Sign in</button>
+                  </form>
+
+              </div></div>
             </div>
           </div>
           <div class="row">

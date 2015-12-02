@@ -1,13 +1,23 @@
 app.controller("TestQuestions", function($scope, $http) 
 	{
 	
+	$scope.username;
+	$scope.password;
+
+	console.log("hello1");
 //	 $.post("http://127.0.0.1:8080", `{"answers_result":777}`);  	
   		$scope.minArea = 10;
     	$scope.maxArea = 90;
 
-		$scope.questions = $http.get('questions-content.js').success(function(response) {
-        return response.data;
-    });,
+
+// DO NOT WORK!!!!
+    	$scope.questions;
+		$http.get('js/questions-content.json').success(function(response) {
+         // $scope.questions =  response.data;
+         console.log(response.data);
+
+    });
+		console.log($scope.questions);
 
 
 
@@ -146,37 +156,40 @@ app.controller("TestQuestions", function($scope, $http)
                 
             });
 
+			// При нажатии кнопки мы отправляем JSON на урл:
+                $http({
+                    method: 'POST',
+                    url: 'http://127.0.0.1:8080/my',
+                    data: total_result_all
+                })
+                    .success(function(data) {})
 
-	                $http({
-	                    method: 'POST',
-	                    url: 'http://127.0.0.1:8080/my',
-	                    data: total_result_all
-	                })
-	                    .success(function(data) {})
-
-               		total_result_all.push(area_string);
-               		//	$http.post("http://127.0.0.1:8080/my", total_result); 
-         			//console.log(answers_result);
-
-
-			
-       	// 	console.log(answers.push("QID: ", question.id, ", AID: ", _answer.id));	
-    		
-      		console.log(answers_result);
-
-
-
-      		// При нажатии кнопки мы отправляем JSON на урл:
-
+           		total_result_all.push(area_string);
+  		
+	      		console.log(answers_result);
 
        	}
 
-// $scope.sendDatatoServer = function() 
-//   	{
 
 
     };
 
+
+    // send login info to server
+	$scope.sendLoginInfo = function() 
+       	{
+       		authdata = JSON.stringify({'username': $scope.username, 'password' : $scope.password});
+            $http({
+                method: 'POST',
+                url: 'http://127.0.0.1:8080/login',
+                data: authdata
+                
+            })
+                .success(function(data) {})
+
+       		console.log(authdata);
+
+       	}
 
     
 });
