@@ -64,6 +64,11 @@ h4
   position: relative;
 }
 
+.myslider {
+  margin-right: 10%;
+  margin-left: 1%;
+}
+
 .ui-slider-out-of-bounds {
   position: absolute;
   background-color: #EEE;
@@ -84,7 +89,6 @@ h4
 .footer{
   width: 100%;
   vertical-align: middle;
-  margin: 0 40px;
   overflow: hidden;
   display: inline-block;
   text-align: center;
