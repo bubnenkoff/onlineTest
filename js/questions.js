@@ -1,5 +1,14 @@
 app.controller("TestQuestions", function($scope, $http) 
 	{
+
+	$scope.showLoginBar = true;
+
+	$http.get('http://127.0.0.1:8080/checkAuthorization').then(function(response) {
+    	console.log("---->", response.data);
+    	if (response.data == "onSite") // user logined
+			$scope.showLoginBar = false;    		
+	});
+
 	
 	$scope.username;
 	$scope.password;
@@ -10,8 +19,7 @@ app.controller("TestQuestions", function($scope, $http)
     	$scope.maxArea = 90;
 
 
-// DO NOT WORK!!!!
-    	$scope.questions;
+    	$scope.questions; // load questions from file
 		$http.get('js/questions-content.json').then(function(response) {
          $scope.questions =  response.data;
          // console.log(response.data);

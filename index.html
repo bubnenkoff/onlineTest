@@ -16,7 +16,7 @@
 	</head>
 	<body ng-app="myApp">
     <div ng-controller="TestQuestions">
-    
+
     <div style="text-align: center;">
       <div class="mycontainer">
         <div class="center-block">
@@ -24,7 +24,9 @@
             <div class="col-sm-12"><img src="imgs/top1.jpg"></div>
             <div class="row">
               <div class="pull-right"><div class="navbar-text">
-                
+
+
+              <div ng-show="showLoginBar">
                    <form class="form-inline">
                     <div class="form-group">
                       <label class="sr-only" for="exampleUserName">User name</label>
@@ -41,11 +43,21 @@
                     </div>
                     <button type="submit" class="btn btn-default" ng-click="sendLoginInfo()">Sign in</button>
                   </form>
+              </div>
+              
+
+
+               <div ng-show="!showLoginBar"> <!-- if we are not logined -->
+                   <form class="form-inline">
+                      <button type="submit" class="btn btn-default" ng-click="sendLoginInfo()">Exit</button>
+                  </form>
+              </div>      
 
               </div></div>
             </div>
           </div>
           <div class="row">
+
             <div class="col-sm-1">
               <ol>
                 <li>34123</li>
