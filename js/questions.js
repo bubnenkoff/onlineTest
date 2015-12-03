@@ -12,12 +12,12 @@ app.controller("TestQuestions", function($scope, $http)
 
 // DO NOT WORK!!!!
     	$scope.questions;
-		$http.get('js/questions-content.json').success(function(response) {
-         // $scope.questions =  response.data;
-         console.log(response.data);
+		$http.get('js/questions-content.json').then(function(response) {
+         $scope.questions =  response.data;
+         // console.log(response.data);
 
     });
-		console.log($scope.questions);
+		//console.log($scope.questions);
 
 
 
